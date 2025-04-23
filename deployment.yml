@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment 
+  namespace: default
+  labels:
+    app: MYAPP
+spec:
+  selector:
+    matchLabels:
+      app: MYAPP
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: MYAPP
+    spec:
+      containers:
+        - name: cont-1
+          image: shaikmustafa/mygame
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "100m"
+            limits:
+              cpu: "500m"
